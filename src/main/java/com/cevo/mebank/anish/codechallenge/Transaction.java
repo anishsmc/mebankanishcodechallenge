@@ -1,7 +1,6 @@
 package com.cevo.mebank.anish.codechallenge;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class Transaction {
 
@@ -9,20 +8,28 @@ public class Transaction {
     private String fromAccountID;
     private String toAccountID;
     private LocalDateTime createdAt;
-    private long amount;
-    private String transactionType;
+    private long amountInCents;
+    private TransactionTypes transactionType;
     private String relatedPayment;
 
     public Transaction(String... transactionData) {
         this.transactionID = transactionData[0];
         this.fromAccountID = transactionData[1];
         this.toAccountID = transactionData[2];
-        this.createdAt = LocalDateTime.parse(transactionData[3], GlobalConstants.formatter);
-        this.amount = Long.parseLong(transactionData[4]);
-        this.transactionType = transactionData[5];
-        this.relatedPayment = transactionData[6];
+        this.createdAt = CommonDateFormatter.getLocalDateTimeFromString(transactionData[3]);
+        this.amountInCents = convertStringToLongStorage(transactionData[4]);
+        this.transactionType = TransactionTypes.valueOf(transactionData[5]);
+        if(this.transactionType.equals(TransactionTypes.REVERSAL)) {
+            this.relatedPayment = transactionData[6];
+        }
     }
 
+    private long convertStringToLongStorage(String inputNumber){
+        //Trying to retain as much precision as possible. BigDecimal will be a better option if more precision is needed, but for 2 digit fractional values, meh.
+        double interimVal = Double.parseDouble(inputNumber);
+        interimVal *= 100;
+        return (long) interimVal;
+    }
     public String getTransactionID() {
         return transactionID;
     }
@@ -55,19 +62,19 @@ public class Transaction {
         this.createdAt = createdAt;
     }
 
-    public long getAmount() {
-        return amount;
+    public long getAmountInCents() {
+        return amountInCents;
     }
 
-    public void setAmount(long amount) {
-        this.amount = amount;
+    public void setAmountInCents(long amountInCents) {
+        this.amountInCents = amountInCents;
     }
 
-    public String getTransactionType() {
+    public TransactionTypes getTransactionType() {
         return transactionType;
     }
 
-    public void setTransactionType(String transactionType) {
+    public void setTransactionType(TransactionTypes transactionType) {
         this.transactionType = transactionType;
     }
 
