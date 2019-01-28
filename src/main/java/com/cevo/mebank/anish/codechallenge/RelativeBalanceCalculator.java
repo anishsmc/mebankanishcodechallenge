@@ -19,7 +19,31 @@ public class RelativeBalanceCalculator {
     }
 
 
-    public void calculateRelativeBalanceFor(String accountID, LocalDateTime fromDateTime, LocalDateTime toDateTime){
-
+    public String calculateRelativeBalanceFor(String accountID, LocalDateTime fromDateTime, LocalDateTime toDateTime){
+        long relativeBalance = 0;
+        long reversalBalance = 0;
+        int transactionCounter = 0;
+        for (Transaction transaction : transactionList){
+            if(transaction.getCreatedAt().isAfter(fromDateTime) && transaction.getCreatedAt().isBefore(toDateTime) && transaction.getTransactionType().equals(TransactionTypes.PAYMENT)){
+                if(transaction.getFromAccountID().equals(accountID)){
+                    relativeBalance -= transaction.getAmount();
+                    transactionCounter++;
+                }else if(transaction.getToAccountID().equals(accountID)){
+                    relativeBalance += transaction.getAmount();
+                    transactionCounter++;
+                }
+            }
+            else if(transaction.getTransactionType().equals(TransactionTypes.REVERSAL)){
+                if(transaction.getFromAccountID().equals(accountID)){
+                    reversalBalance -= transaction.getAmount();
+                    transactionCounter--;
+                }else if(transaction.getToAccountID().equals(accountID)){
+                    reversalBalance += transaction.getAmount();
+                    transactionCounter--;
+                }
+            }
+        }
+        relativeBalance += reversalBalance;
+        return "The Relative Balance for this period is " + relativeBalance + " and the Number of Transactions included is: " + transactionCounter;
     }
 }
