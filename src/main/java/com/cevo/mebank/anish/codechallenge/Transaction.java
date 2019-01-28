@@ -1,11 +1,14 @@
 package com.cevo.mebank.anish.codechallenge;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Transaction {
 
     private String transactionID;
     private String fromAccountID;
     private String toAccountID;
-    private String createdAt;
+    private LocalDateTime createdAt;
     private long amount;
     private String transactionType;
     private String relatedPayment;
@@ -14,7 +17,7 @@ public class Transaction {
         this.transactionID = transactionData[0];
         this.fromAccountID = transactionData[1];
         this.toAccountID = transactionData[2];
-        this.createdAt = transactionData[3];
+        this.createdAt = LocalDateTime.parse(transactionData[3], GlobalConstants.formatter);
         this.amount = Long.parseLong(transactionData[4]);
         this.transactionType = transactionData[5];
         this.relatedPayment = transactionData[6];
@@ -44,11 +47,11 @@ public class Transaction {
         this.toAccountID = toAccountID;
     }
 
-    public String getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 

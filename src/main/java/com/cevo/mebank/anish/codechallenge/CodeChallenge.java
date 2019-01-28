@@ -12,6 +12,14 @@ public class CodeChallenge {
 
         String fileName = "path-to-file/filename.csv";
 
+
+        // Obtain the File
+        // Create a Transaction Structure
+        // Call the calculator
+        // done??
+
+
+
         try {
             Stream<String> transactions = Files.lines(Paths.get(fileName));
             transactions.forEach(transaction -> transaction.split("/,/"));
