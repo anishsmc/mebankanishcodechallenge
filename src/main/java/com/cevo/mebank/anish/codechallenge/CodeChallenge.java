@@ -58,9 +58,9 @@ public class CodeChallenge {
 
     private static String calculateAndGetOutputOnUserInput(RelativeBalanceCalculator rbc){
         System.out.println("Enter the From Date for Balance Calculation: ");
-        LocalDateTime fromDate = CommonDateFormatter.getLocalDateTimeFromString(scanner.next());
+        LocalDateTime fromDate = CommonFormatter.getLocalDateTimeFromString(scanner.next());
         System.out.println("Enter the To Date for Balance Calculation: ");
-        LocalDateTime toDate = CommonDateFormatter.getLocalDateTimeFromString(scanner.next());
+        LocalDateTime toDate = CommonFormatter.getLocalDateTimeFromString(scanner.next());
         System.out.println("Enter the Account ID for Balance Calculation: ");
         String accountID = scanner.next();
         return rbc.calculateRelativeBalanceFor(accountID, fromDate, toDate);

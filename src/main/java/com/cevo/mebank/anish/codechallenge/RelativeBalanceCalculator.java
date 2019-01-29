@@ -44,6 +44,6 @@ public class RelativeBalanceCalculator {
             }
         }
         relativeBalance += reversalBalance;
-        return "The Relative Balance for this period is " + (relativeBalance) + " and the Number of Transactions included is: " + transactionCounter;
+        return "The Relative Balance for this period is " + CommonFormatter.convertCentValueIntoDollarDisplay(relativeBalance) + " and the Number of Transactions included is: " + transactionCounter;
     }
 }
