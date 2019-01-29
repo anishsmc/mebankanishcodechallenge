@@ -35,10 +35,10 @@ public class RelativeBalanceCalculator {
             }
             else if(transaction.getTransactionType().equals(TransactionTypes.REVERSAL)){
                 if(transaction.getFromAccountID().equals(accountID)){
-                    reversalBalance -= transaction.getAmountInCents();
+                    reversalBalance += transaction.getAmountInCents();
                     transactionCounter--;
                 }else if(transaction.getToAccountID().equals(accountID)){
-                    reversalBalance += transaction.getAmountInCents();
+                    reversalBalance -= transaction.getAmountInCents();
                     transactionCounter--;
                 }
             }
