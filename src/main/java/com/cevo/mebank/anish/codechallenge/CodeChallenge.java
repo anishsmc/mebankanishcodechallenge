@@ -38,6 +38,7 @@ public class CodeChallenge {
             transactions.forEach(transaction -> transaction.split("/,/"));
         } catch (java.io.IOException ioe) {
             ioe.printStackTrace();
+            System.exit(1);
         }
 
     }
