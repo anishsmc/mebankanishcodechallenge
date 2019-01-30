@@ -2,4 +2,4 @@ language: java
 jdk:
   - openjdk11
 after_success:
-  - mvn clean test jacoco:report coveralls:report
+  - mvn clean test -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID jacoco:report coveralls:report
