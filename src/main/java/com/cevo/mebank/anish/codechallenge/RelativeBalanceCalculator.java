@@ -14,10 +14,6 @@ public class RelativeBalanceCalculator {
         return transactionList;
     }
 
-    public void setTransactionList(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
-    }
-
 
     public String calculateRelativeBalanceFor(String accountID, LocalDateTime fromDateTime, LocalDateTime toDateTime){
         long relativeBalance = 0;

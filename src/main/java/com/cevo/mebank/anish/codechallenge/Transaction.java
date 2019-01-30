@@ -28,55 +28,27 @@ public class Transaction {
         return transactionID;
     }
 
-    public void setTransactionID(String transactionID) {
-        this.transactionID = transactionID;
-    }
-
     public String getFromAccountID() {
         return fromAccountID;
-    }
-
-    public void setFromAccountID(String fromAccountID) {
-        this.fromAccountID = fromAccountID;
     }
 
     public String getToAccountID() {
         return toAccountID;
     }
 
-    public void setToAccountID(String toAccountID) {
-        this.toAccountID = toAccountID;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public long getAmountInCents() {
         return amountInCents;
     }
 
-    public void setAmountInCents(long amountInCents) {
-        this.amountInCents = amountInCents;
-    }
-
     public TransactionTypes getTransactionType() {
         return transactionType;
     }
 
-    public void setTransactionType(TransactionTypes transactionType) {
-        this.transactionType = transactionType;
-    }
-
     public String getRelatedPayment() {
         return relatedPayment;
-    }
-
-    public void setRelatedPayment(String relatedPayment) {
-        this.relatedPayment = relatedPayment;
     }
 }
