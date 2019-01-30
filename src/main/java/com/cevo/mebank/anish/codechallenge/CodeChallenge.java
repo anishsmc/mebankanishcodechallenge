@@ -47,7 +47,7 @@ public class CodeChallenge {
         return transactions;
     }
 
-    private static List<Transaction> transformStreamToTransactions(Stream<String> transactions) {
+    static List<Transaction> transformStreamToTransactions(Stream<String> transactions) {
         List<Transaction> transactionList = new ArrayList<>();
         transactions.forEach(transaction -> {
             Transaction t = new Transaction(transaction.split("/,/"));
