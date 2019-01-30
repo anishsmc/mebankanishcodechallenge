@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/anishsmc/mebankanishcodechallenge.svg?branch=master)](https://travis-ci.org/anishsmc/mebankanishcodechallenge.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/anishsmc/mebankanishcodechallenge/badge.svg?branch=master)](https://coveralls.io/github/anishsmc/mebankanishcodechallenge?branch=master)
 # MeBank Coding Challenge
 
 This repository contains code that is a solution to the Relative Balance Calculator Coding Test as part of MeBank's interview process.
