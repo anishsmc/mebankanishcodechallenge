@@ -36,6 +36,8 @@ The JAR file is executable and the program can be run by executing it. Use the c
 java -jar codechallenge-0.0.1-SNAPSHOT-jar-with-dependencies.jar <absolute-path-to-input-csv>
 ```
 
+**Note:** The program assumes there are no headers in the CSV file. Data starts at Line 1.
+
 The program takes a CSV list of transactions as input specified in the challenge requirements.
 
 Once run, the program requests User Input:
