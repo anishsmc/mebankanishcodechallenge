@@ -28,7 +28,7 @@ public class CodeChallenge {
         List<Transaction> transactionList = transformStreamToTransactions(streamedFile);
         RelativeBalanceCalculator rbc = new RelativeBalanceCalculator(transactionList);
 
-        System.out.println(calculateAndGetOutputOnUserInput(rbc));
+        System.out.println(calculateAndGetOutputOnUserInput(scanner, rbc));
         System.exit(0);
 
         // recursively call until exit - Needs to be done.
@@ -50,20 +50,24 @@ public class CodeChallenge {
 
     static List<Transaction> transformStreamToTransactions(Stream<String> transactions) {
         List<Transaction> transactionList = new ArrayList<>();
-        transactions.forEach(transaction -> {
-            Transaction t = new Transaction(transaction.split(","));
-            transactionList.add(t);
-        });
+        transactions.forEach(transaction ->  transactionList.add(createTransactionFromInput(transaction)));
+// Can be done as a Lambda but is not ideal as it is no longer testable. This means behaviour is too complex for a lambda.
+//        transactions.forEach(transaction -> {
+//            Transaction t = new Transaction(transaction.split(","));
+//            transactionList.add(t);
+//        });
         return transactionList;
     }
 
-    private static String calculateAndGetOutputOnUserInput(RelativeBalanceCalculator rbc){
+    static Transaction createTransactionFromInput(String inputLine){
+        return new Transaction(inputLine.split(","));
+    }
+
+    static String calculateAndGetOutputOnUserInput(Scanner scanner, RelativeBalanceCalculator rbc){
         System.out.println("Enter the Account ID for Balance Calculation: ");
         String accountID = scanner.nextLine();
         System.out.println("Enter the From Date for Balance Calculation: ");
-        String inupudAte = scanner.nextLine();
-        System.out.println("Date is  " + inupudAte);
-        LocalDateTime fromDate = CommonFormatter.getLocalDateTimeFromString(inupudAte);
+        LocalDateTime fromDate = CommonFormatter.getLocalDateTimeFromString(scanner.nextLine());
         System.out.println("Enter the To Date for Balance Calculation: ");
         LocalDateTime toDate = CommonFormatter.getLocalDateTimeFromString(scanner.nextLine());
         return rbc.calculateRelativeBalanceFor(accountID, fromDate, toDate);
