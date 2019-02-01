@@ -13,14 +13,14 @@ public class Transaction {
     private String relatedPayment;
 
     public Transaction(String... transactionData) {
-        this.transactionID = transactionData[0];
-        this.fromAccountID = transactionData[1];
-        this.toAccountID = transactionData[2];
-        this.createdAt = CommonFormatter.getLocalDateTimeFromString(transactionData[3]);
-        this.amountInCents = CommonFormatter.convertStringCurrencyToLongStorageInCents(transactionData[4]);
-        this.transactionType = TransactionTypes.valueOf(transactionData[5]);
+        this.transactionID = transactionData[0].strip();
+        this.fromAccountID = transactionData[1].strip();
+        this.toAccountID = transactionData[2].strip();
+        this.createdAt = CommonFormatter.getLocalDateTimeFromString(transactionData[3].strip());
+        this.amountInCents = CommonFormatter.convertStringCurrencyToLongStorageInCents(transactionData[4].strip());
+        this.transactionType = TransactionTypes.valueOf(transactionData[5].strip());
         if(this.transactionType.equals(TransactionTypes.REVERSAL)) {
-            this.relatedPayment = transactionData[6];
+            this.relatedPayment = transactionData[6].strip();
         }
     }
 
