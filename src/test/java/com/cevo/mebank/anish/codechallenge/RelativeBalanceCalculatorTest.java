@@ -10,8 +10,8 @@ import java.util.List;
 
 @DisplayName("Tests that verify the calculator logic")
 public class RelativeBalanceCalculatorTest {
-    static List<Transaction> transactionList = new ArrayList<>();
-    static List<Transaction> transactionListWithReturns = new ArrayList<>();
+    private static List<Transaction> transactionList = new ArrayList<>();
+    private static List<Transaction> transactionListWithReturns = new ArrayList<>();
 
     @BeforeAll
     static void setupTransactionList(){

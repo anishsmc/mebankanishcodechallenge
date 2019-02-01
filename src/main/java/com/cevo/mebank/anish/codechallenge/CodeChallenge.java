@@ -11,8 +11,7 @@ import java.util.stream.Stream;
 
 public class CodeChallenge {
 
-    static Scanner scanner = new Scanner(System.in);
-    static boolean closeApp = false;
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String args[]) {
 
@@ -36,14 +35,14 @@ public class CodeChallenge {
         try {
             Stream<String> transactions = Files.lines(Paths.get(fileName));
             transactions.forEach(transaction -> transaction.split("/,/"));
-        } catch (java.io.IOException ioe) {
+        } catch (IOException ioe) {
             ioe.printStackTrace();
             System.exit(1);
         }
 
     }
 
-    private static Stream<String> getStreamfromFile(String fileNameWithPath) throws java.io.IOException {
+    private static Stream<String> getStreamfromFile(String fileNameWithPath) throws IOException {
         Stream<String> transactions = Files.lines(Paths.get(fileNameWithPath));
         return transactions;
     }
