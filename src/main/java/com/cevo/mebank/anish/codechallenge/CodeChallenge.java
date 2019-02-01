@@ -51,19 +51,21 @@ public class CodeChallenge {
     static List<Transaction> transformStreamToTransactions(Stream<String> transactions) {
         List<Transaction> transactionList = new ArrayList<>();
         transactions.forEach(transaction -> {
-            Transaction t = new Transaction(transaction.split("/,/"));
+            Transaction t = new Transaction(transaction.split(","));
             transactionList.add(t);
         });
         return transactionList;
     }
 
     private static String calculateAndGetOutputOnUserInput(RelativeBalanceCalculator rbc){
-        System.out.println("Enter the From Date for Balance Calculation: ");
-        LocalDateTime fromDate = CommonFormatter.getLocalDateTimeFromString(scanner.next());
-        System.out.println("Enter the To Date for Balance Calculation: ");
-        LocalDateTime toDate = CommonFormatter.getLocalDateTimeFromString(scanner.next());
         System.out.println("Enter the Account ID for Balance Calculation: ");
-        String accountID = scanner.next();
+        String accountID = scanner.nextLine();
+        System.out.println("Enter the From Date for Balance Calculation: ");
+        String inupudAte = scanner.nextLine();
+        System.out.println("Date is  " + inupudAte);
+        LocalDateTime fromDate = CommonFormatter.getLocalDateTimeFromString(inupudAte);
+        System.out.println("Enter the To Date for Balance Calculation: ");
+        LocalDateTime toDate = CommonFormatter.getLocalDateTimeFromString(scanner.nextLine());
         return rbc.calculateRelativeBalanceFor(accountID, fromDate, toDate);
     }
 }
